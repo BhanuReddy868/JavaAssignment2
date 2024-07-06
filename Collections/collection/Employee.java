@@ -125,280 +125,298 @@ public class Employee {
         }
         System.out.println();
 //3 : What is the average age of male and female employees?
-        int count = malecount + femalecount;
-        float sum = 0;
-        float a = 0f;
+        float sumofmale = 0;
+        float sumoffemale=0;
+        float a=0f;
+        float b=0f;
         for (Employee employee : l) {
-            a = (sum += employee.getAge()) / count;
-
-
+            if (employee.getGender().equalsIgnoreCase("Male")) {
+                a = (sumofmale += employee.getAge()) / malecount;
+            }
         }
-        System.out.println("The sum of ages  male and female is:" + sum);
-        System.out.println("The count of male and female is:" + count);
-        System.out.println("the avg of both male and female is" + a);
+        System.out.println("The count of male  is:" + malecount);
+        System.out.println("The sum of male age is :"+sumofmale);
+        System.out.println("The average of male age is : " +a);
 
         System.out.println();
-        //4 : Get the details of highest paid employee in the organization?
-
-        ArrayList<Double> arr = new ArrayList<Double>();
         for (Employee employee : l) {
-            arr.add(employee.getSalary());
-        }
-        double max = arr.get(0);
-        int n = arr.size();
-        for (int i = 1; i < n; i++) {
-            if (arr.get(i) > max) {
-                max = arr.get(i);
+            if (employee.getGender().equalsIgnoreCase("female")) {
+                b = (sumoffemale += employee.getAge()) / femalecount;
             }
         }
-        System.out.println("The highest salary of employee in organization is :" + max);
+        System.out.println("The count of female  is:" + femalecount);
+        System.out.println("The sum of female age is :"+sumoffemale);
+        System.out.println("The average of female age is : " +b);
 
-        System.out.println();
 
-        //5 : Get the names of all employees who have joined after 2015?
-        for (Employee employee : l) {
-            if (employee.getYear() > 2015) {
-
-                System.out.println("The employees how joined after 2015 :" + employee.getName());
-            }
-        }
-
-        System.out.println();
-
-        //6 : Count the number of employees in each department?
-        int countofProductDevelopment = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("Product Development")) {
-                countofProductDevelopment++;
-            }
-        }
-        System.out.println("The Employee who Department is product development is:" + countofProductDevelopment);
-
-        int countofSalesAndMarketing = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("Sales And Marketing")) {
-                countofSalesAndMarketing++;
-
-            }
-        }
-        System.out.println("The Employee who Department is Sales And Marketing is:" + countofSalesAndMarketing);
-
-        int countofSecurityAndtransport = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("Security And transport")) {
-                countofSecurityAndtransport++;
-            }
-        }
-        System.out.println("The Employee who Department is Security And transport is:" + countofSecurityAndtransport);
-
-        int countofInfrastructure = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("Infrastructure")) {
-                countofInfrastructure++;
-            }
-        }
-        System.out.println("The Employee who Department is Infrastructure is:" + countofInfrastructure);
-
-        int countofHR = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("HR")) {
-                countofHR++;
-            }
-        }
-        System.out.println("The Employee who Department is HR is:" + countofHR);
-
-        int countofAccountAndFinance = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("Account And Finance")) {
-                countofAccountAndFinance++;
-            }
-        }
-        System.out.println("The Employee who Department is Account And Finance is:" + countofAccountAndFinance);
-        System.out.println();
-        //7: What is the average salary of each department?
-        int sumofsalaryofPD = 0;
-        int countofsalaryPD = 0;
-        int PD = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("Product Development")) {
-                countofsalaryPD++;
-                PD = (sumofsalaryofPD += employee.getSalary()) / countofsalaryPD;
-            }
-        }
-        System.out.println("The sum of salaries of Product Development department is:" + sumofsalaryofPD);
-        System.out.println("The average salary of Product Development department is :" + PD);
-        System.out.println();
-
-        int sumofsalaryofsm = 0;
-        int countofsalarysm = 0;
-        int sm = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("sales and marketing")) {
-                countofsalarysm++;
-                sm = (sumofsalaryofsm += employee.getSalary()) / countofsalarysm;
-            }
-        }
-        System.out.println("The sum of salaries of Sales and Marketing department is:" + sumofsalaryofPD);
-        System.out.println("The average salary of Sale and Marketing department is :" + sm);
 
 
         System.out.println();
-        int sumofsalaryofST = 0;
-        int countofsalaryST = 0;
-        int ST = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("Security And Transport")) {
-                countofsalaryST++;
-                ST = (sumofsalaryofST += employee.getSalary()) / countofsalaryST;
+            //4 : Get the details of highest paid employee in the organization?
+
+            ArrayList<Double> arr = new ArrayList<Double>();
+            for (Employee employee : l) {
+                arr.add(employee.getSalary());
             }
-        }
-        System.out.println("The sum of salaries of Security and transporting is:" + sumofsalaryofST);
-        System.out.println("The average salary of Security and transporting is :" + ST);
-
-
-        System.out.println();
-        int sumofsalaryofIN = 0;
-        int countofsalaryIN = 0;
-        int IN = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("Infrastructure")) {
-                countofsalaryIN++;
-                IN = (sumofsalaryofIN += employee.getSalary()) / countofsalaryIN;
+            double max = arr.get(0);
+            int n = arr.size();
+            for (int i = 1; i < n; i++) {
+                if (arr.get(i) > max) {
+                    max = arr.get(i);
+                }
             }
-        }
-        System.out.println("The sum of salaries of Infrastructure is:" + sumofsalaryofIN);
-        System.out.println("The average salary of Infrastructure is :" + IN);
+            System.out.println("The highest salary of employee in organization is :" + max);
 
+            System.out.println();
 
-        System.out.println();
-        int sumofsalaryofHR = 0;
-        int countofsalaryHR = 0;
-        int HR = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("HR")) {
-                countofsalaryHR++;
-                HR = (sumofsalaryofHR += employee.getSalary()) / countofsalaryHR;
+            //5 : Get the names of all employees who have joined after 2015?
+            for (Employee employee : l) {
+                if (employee.getYear() > 2015) {
+
+                    System.out.println("The employees how joined after 2015 :" + employee.getName());
+                }
             }
-        }
-        System.out.println("The sum of salaries of HR is:" + sumofsalaryofHR);
-        System.out.println("The average salary of HR is :" + HR);
 
-        System.out.println();
-        int sumofsalaryofAF = 0;
-        int countofsalaryAF = 0;
-        int AF = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("Account and Finance")) {
-                countofsalaryAF++;
-                AF = (sumofsalaryofAF += employee.getSalary()) / countofsalaryAF;
+            System.out.println();
+
+            //6 : Count the number of employees in each department?
+            int countofProductDevelopment = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("Product Development")) {
+                    countofProductDevelopment++;
+                }
             }
-        }
-        System.out.println("The sum of salaries of Account And Finance is:" + sumofsalaryofAF);
-        System.out.println("The average salary of Account And Finance is :" + AF);
+            System.out.println("The Employee who Department is product development is:" + countofProductDevelopment);
 
-        System.out.println();
-        //  8 : Get the details of youngest male employee in the product
-        Employee young = l.get(0);
-        for (Employee employee : l) {
-            if (employee.getGender().equalsIgnoreCase("MAle") && employee.getPosition().equalsIgnoreCase("Product Development")) {
-                if (employee.age < young.age) {
+            int countofSalesAndMarketing = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("Sales And Marketing")) {
+                    countofSalesAndMarketing++;
+
+                }
+            }
+            System.out.println("The Employee who Department is Sales And Marketing is:" + countofSalesAndMarketing);
+
+            int countofSecurityAndtransport = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("Security And transport")) {
+                    countofSecurityAndtransport++;
+                }
+            }
+            System.out.println("The Employee who Department is Security And transport is:" + countofSecurityAndtransport);
+
+            int countofInfrastructure = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("Infrastructure")) {
+                    countofInfrastructure++;
+                }
+            }
+            System.out.println("The Employee who Department is Infrastructure is:" + countofInfrastructure);
+
+            int countofHR = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("HR")) {
+                    countofHR++;
+                }
+            }
+            System.out.println("The Employee who Department is HR is:" + countofHR);
+
+            int countofAccountAndFinance = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("Account And Finance")) {
+                    countofAccountAndFinance++;
+                }
+            }
+            System.out.println("The Employee who Department is Account And Finance is:" + countofAccountAndFinance);
+            System.out.println();
+
+
+            // 7: What is the average salary of each department?
+            int sumofsalaryofPD = 0;
+            int countofsalaryPD = 0;
+            int PD = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("Product Development")) {
+                    countofsalaryPD++;
+                    PD = (sumofsalaryofPD += employee.getSalary()) / countofsalaryPD;
+                }
+            }
+            System.out.println("The sum of salaries of Product Development department is:" + sumofsalaryofPD);
+            System.out.println("The average salary of Product Development department is :" + PD);
+            System.out.println();
+
+            int sumofsalaryofsm = 0;
+            int countofsalarysm = 0;
+            int sm = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("sales and marketing")) {
+                    countofsalarysm++;
+                    sm = (sumofsalaryofsm += employee.getSalary()) / countofsalarysm;
+                }
+            }
+            System.out.println("The sum of salaries of Sales and Marketing department is:" + sumofsalaryofPD);
+            System.out.println("The average salary of Sale and Marketing department is :" + sm);
+
+
+            System.out.println();
+            int sumofsalaryofST = 0;
+            int countofsalaryST = 0;
+            int ST = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("Security And Transport")) {
+                    countofsalaryST++;
+                    ST = (sumofsalaryofST += employee.getSalary()) / countofsalaryST;
+                }
+            }
+            System.out.println("The sum of salaries of Security and transporting is:" + sumofsalaryofST);
+            System.out.println("The average salary of Security and transporting is :" + ST);
+
+
+            System.out.println();
+            int sumofsalaryofIN = 0;
+            int countofsalaryIN = 0;
+            int IN = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("Infrastructure")) {
+                    countofsalaryIN++;
+                    IN = (sumofsalaryofIN += employee.getSalary()) / countofsalaryIN;
+                }
+            }
+            System.out.println("The sum of salaries of Infrastructure is:" + sumofsalaryofIN);
+            System.out.println("The average salary of Infrastructure is :" + IN);
+
+
+            System.out.println();
+            int sumofsalaryofHR = 0;
+            int countofsalaryHR = 0;
+            int HR = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("HR")) {
+                    countofsalaryHR++;
+                    HR = (sumofsalaryofHR += employee.getSalary()) / countofsalaryHR;
+                }
+            }
+            System.out.println("The sum of salaries of HR is:" + sumofsalaryofHR);
+            System.out.println("The average salary of HR is :" + HR);
+
+            System.out.println();
+            int sumofsalaryofAF = 0;
+            int countofsalaryAF = 0;
+            int AF = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("Account and Finance")) {
+                    countofsalaryAF++;
+                    AF = (sumofsalaryofAF += employee.getSalary()) / countofsalaryAF;
+                }
+            }
+            System.out.println("The sum of salaries of Account And Finance is:" + sumofsalaryofAF);
+            System.out.println("The average salary of Account And Finance is :" + AF);
+
+            System.out.println();
+            //  8 : Get the details of youngest male employee in the product
+            Employee young = l.get(0);
+            for (Employee employee : l) {
+                if (employee.getGender().equalsIgnoreCase("MAle") && employee.getPosition().equalsIgnoreCase("Product Development")) {
+                    if (employee.age < young.age) {
+                        young = employee;
+                    }
+                }
+            }
+
+            System.out.println("The youngest Male  in product and Development is: " + young.name + "is " + young.age);
+
+            System.out.println();
+
+            //9.Who has the most working experience in the organization?
+            Employee workyears = l.get(0);
+            for (Employee employee : l) {
+                if (employee.year < workyears.year) {
+                    workyears = employee;
+                }
+            }
+            System.out.println("The employee who has most working experinece in organization is : " + workyears.name + "  since " + workyears.year);
+            System.out.println();
+            //10 : How many male and female employees are there in the sales
+            int countofMale = 0;
+            int countOffemale = 0;
+            for (Employee employee : l) {
+                if (employee.getPosition().equalsIgnoreCase("sales and marketing")) {
+                    if (employee.getGender().equalsIgnoreCase("Male")) {
+                        countofMale++;
+                    } else
+                        countOffemale++;
+                }
+            }
+            System.out.println("The number of male who are in sales and marketing is :" + countofMale);
+            System.out.println("The number of female who are in sales and marketing is :" + countOffemale);
+
+            System.out.println();
+            //11 : What is the average salary of male and female employees?
+            int count1 = 0;
+            int count2 = 0;
+            double sumofmalesalary = 0;
+            double sumoffemalesalary = 0;
+            double x = 0;
+            double y = 0;
+            for (Employee employee : l) {
+                if (employee.getGender().equalsIgnoreCase("Male")) {
+                    count1++;
+                    x = (sumofmalesalary += employee.getSalary()) / count1;
+                } else {
+                    count2++;
+                    y = (sumoffemalesalary += employee.getSalary()) / count2;
+                }
+            }
+            System.out.println(count1);
+            System.out.println("the average of male salary is : " + x);
+            System.out.println(count2);
+            System.out.println("the average of female salary is : " + y);
+
+            System.out.println();
+            //12 : List down the names of all employees in each department?
+
+            Map<String, List<Employee>> postion = new HashMap<>();
+            for (Employee employee : l) {
+                postion.computeIfAbsent(employee.getPosition(), k -> new ArrayList<>()).
+                        add(employee);
+            }
+            for (Map.Entry<String, List<Employee>> entry : postion.entrySet()) {
+                System.out.println();
+                System.out.println("Department :" + entry.getKey());
+                for (Employee employee : entry.getValue()) {
+                    System.out.println(employee.getName());
+                }
+            }
+            System.out.println();
+            //13 : What is the average salary and total salary of the whole
+            int totalsalary = 0;
+            int avg = 0;
+            int countofSalary = 0;
+            for (Employee employee : l) {
+                countofSalary++;
+                totalsalary += employee.getSalary();
+                avg = totalsalary / countofSalary;
+            }
+            System.out.println("The total salary of whole employees is" + totalsalary);
+            System.out.println("The average salary of whole employees is :" + avg);
+
+            System.out.println();
+            //14 : Separate the employees who are younger or equal to 25 years from
+            for (Employee employee : l) {
+                if (employee.age <= 25) {
+                    System.out.println("The age of employee who is younger and equals to 25 :" + employee.getName() + " age is : " + employee.getAge());
+                }
+            }
+            System.out.println();
+
+            //15 : Who is the oldest employee in the organization? What is his age and which department he belongs to?
+            for (Employee employee : l) {
+                if (employee.age > young.age) {
                     young = employee;
                 }
             }
+            System.out.println("The oldest employee in organization is  " + young.getName() + "  age is  " + young.getAge() + " and department is  " + young.getPosition());
         }
-
-        System.out.println("The youngest Male  in product and Development is: " + young.name + "is " + young.age);
-
-        System.out.println();
-
-        //9.Who has the most working experience in the organization?
-        Employee workyears = l.get(0);
-        for (Employee employee : l) {
-            if (employee.year < workyears.year) {
-                workyears = employee;
-            }
-        }
-        System.out.println("The employee who has most working experinece in organization is : " + workyears.name + "  since " + workyears.year);
-        System.out.println();
-        //10 : How many male and female employees are there in the sales
-        int countofMale = 0;
-        int countOffemale = 0;
-        for (Employee employee : l) {
-            if (employee.getPosition().equalsIgnoreCase("sales and marketing")) {
-                if (employee.getGender().equalsIgnoreCase("Male")) {
-                    countofMale++;
-                } else
-                    countOffemale++;
-            }
-        }
-        System.out.println("The number of male who are in sales and marketing is :" + countofMale);
-        System.out.println("The number of female who are in sales and marketing is :" + countOffemale);
-
-        System.out.println();
-        //11 : What is the average salary of male and female employees?
-        int count1 = 0;
-        int count2 = 0;
-        double sumofmalesalary = 0;
-        double sumoffemalesalary = 0;
-        double x = 0;
-        double y = 0;
-        for (Employee employee : l) {
-            if (employee.getGender().equalsIgnoreCase("Male")) {
-                count1++;
-                x = (sumofmalesalary += employee.getSalary()) / count1;
-            } else {
-                count2++;
-                y = (sumoffemalesalary += employee.getSalary()) / count2;
-            }
-        }
-        System.out.println(count1);
-        System.out.println("the average of male salary is : " + x);
-        System.out.println(count2);
-        System.out.println("the average of female salary is : " + y);
-
-        System.out.println();
-        //12 : List down the names of all employees in each department?
-
-        Map<String, List<Employee>> postion = new HashMap<>();
-        for (Employee employee : l) {
-          postion.computeIfAbsent(employee.getPosition(),k-> new ArrayList<>()).
-                  add(employee);
-        }
-        for(Map.Entry<String,List<Employee>> entry:postion.entrySet()){
-            System.out.println();
-            System.out.println("Department :"+entry.getKey());
-            for(Employee employee:entry.getValue()){
-                System.out.println(employee.getName());
-            }
-        }
-        System.out.println();
-        //13 : What is the average salary and total salary of the whole
-        int totalsalary=0;
-        int avg=0;
-        int countofSalary=0;
-        for(Employee employee:l){
-            countofSalary++;
-            totalsalary+=employee.getSalary();
-            avg=totalsalary/countofSalary;
-        }
-        System.out.println("The total salary of whole employees is" +totalsalary);
-        System.out.println("The average salary of whole employees is :"+avg);
-
-        System.out.println();
-        //14 : Separate the employees who are younger or equal to 25 years from
-        for(Employee employee:l){
-            if(employee.age<=25){
-                System.out.println("The age of employee who is younger and equals to 25 :"+employee.getName()+ " age is : "+employee.getAge());
-            }
-        }
-        System.out.println();
-
-        //15 : Who is the oldest employee in the organization? What is his age and which department he belongs to?
-        for(Employee employee:l){
-            if(employee.age > young.age) {
-                young = employee;
-            }
-        }
-        System.out.println("The oldest employee in organization is  "+young.getName() + "  age is  "+young.getAge() + " and department is  " +young.getPosition());
     }
-}
+
+
