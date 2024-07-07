@@ -105,13 +105,13 @@ public class Employee {
                 malecount++;
             }
         }
-        System.out.println("the number of male empolyees in comapany are" + malecount);
+        System.out.println("the number of male empolyees in company are : " + malecount);
         for (Employee employee : l) {
             if (employee.getGender().equalsIgnoreCase("Female")) {
                 femalecount++;
             }
         }
-        System.out.println("the number of female empolyees in comapany are" + femalecount);
+        System.out.println("the number of female empolyees in company are : " + femalecount);
         System.out.println();
 
 //2 : Print the name of all departments in the organization?
