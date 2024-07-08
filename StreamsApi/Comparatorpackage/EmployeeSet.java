@@ -20,10 +20,10 @@ public class EmployeeSet {
                 throw new IllegalArgumentException("Employee cannot be null");
             }
             empTreeset.add(emp);
-            return 0; // Successful addition
+            return 0; 
         } catch (Exception e) {
             e.printStackTrace();
-            return 1; // Error occurred
+            return 1; 
         }
     }
 
