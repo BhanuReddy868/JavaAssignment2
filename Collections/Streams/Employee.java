@@ -1,6 +1,7 @@
 package Streams;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.*;
 
 public class Employee {
@@ -112,9 +113,14 @@ public class Employee {
         });
         System.out.println();
         //5 : Get the names of all employees who have joined after 2015?
-        System.out.println("The employees who joined after 2015 :");
-        list.stream().filter(name -> name.getYear() > 2015).map(Employee::getName)
-                .forEach(System.out::println);
+
+        Predicate<Employee> name= year->year.getYear() > 2015;
+        System.out.println("The Employees who has joined after 2015 : ");
+        list.stream().filter(name).map(Employee::getName).forEach(System.out::println);
+
+//        System.out.println("The employees who joined after 2015 :");
+//        list.stream().filter(name -> name.getYear() > 2015).map(Employee::getName)
+//                .forEach(System.out::println);
         //6:Count the number of employees in each department?
         System.out.println();
         Map<String, Long> maplist1 = list.stream().collect(Collectors.groupingBy(Employee::getPosition, Collectors.counting()));
